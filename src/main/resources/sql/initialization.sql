@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS Employee_Skills (
     FOREIGN KEY (skill_id) REFERENCES Skills(id)
 );
 
--- Certifications
+-- Certification
 CREATE TABLE IF NOT EXISTS Certifications (
     id SERIAL PRIMARY KEY,
     employee_id BIGINT UNSIGNED,
