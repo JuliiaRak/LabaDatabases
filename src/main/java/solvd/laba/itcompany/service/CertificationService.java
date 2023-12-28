@@ -1,11 +1,10 @@
-package solvd.laba.itcompany.persistence;
+package solvd.laba.itcompany.service;
 
 import solvd.laba.itcompany.domain.Certification;
 
 import java.util.List;
 
-public interface CertificationRepository {
-
+public interface CertificationService {
     void create(Certification certification);
 
     void update(Certification certification);

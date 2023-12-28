@@ -1,10 +1,10 @@
-package solvd.laba.itcompany.persistence;
+package solvd.laba.itcompany.service;
 
 import solvd.laba.itcompany.domain.ProjectFeedback;
 
 import java.util.List;
 
-public interface ProjectFeedbackRepository {
+public interface ProjectFeedbackService {
 
     void create(ProjectFeedback projectFeedback);
 
