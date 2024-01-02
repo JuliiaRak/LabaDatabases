@@ -3,7 +3,6 @@ package solvd.laba.itcompany.persistence.impl;
 import solvd.laba.itcompany.domain.Department;
 import solvd.laba.itcompany.domain.Employee;
 import solvd.laba.itcompany.domain.exception.PersistenceException;
-import solvd.laba.itcompany.persistence.DepartmentRepository;
 import solvd.laba.itcompany.persistence.EmployeeRepository;
 import solvd.laba.itcompany.persistence.config.ConnectionPool;
 import solvd.laba.itcompany.service.DepartmentService;
@@ -102,8 +101,8 @@ public class EmployeeJdbsRepository implements EmployeeRepository {
                 employee.setId(employeeId);
 
                 Long departmentId = resultSet.getLong("department_id");
-                DepartmentRepository departmentRepository = new DepartmentJdbsRepository();
-                Department department = departmentRepository.findById(departmentId);
+                DepartmentService departmentService = new DepartmentServiceImpl();
+                Department department = departmentService.findById(departmentId);
                 employee.setDepartment(department);
 
                 String firstName = resultSet.getString("first_name");

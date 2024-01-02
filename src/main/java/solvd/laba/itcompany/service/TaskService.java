@@ -1,9 +1,9 @@
 package solvd.laba.itcompany.service;
 
-import solvd.laba.itcompany.domain.Certification;
+import solvd.laba.itcompany.domain.Task;
 
 public interface TaskService {
 
-    void create(Certification certification);
+    void create(Task task);
 
 }

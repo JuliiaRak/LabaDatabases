@@ -4,8 +4,10 @@ select * from Employees;
 select * from Employee_Skills;
 select * from Certifications;
 select * from Vacations;
+
 select * from Clients;
 select * from Contacts_Of_Clients;
+
 select * from Projects;
 select * from Project_Employees;
 select * from Meetings;

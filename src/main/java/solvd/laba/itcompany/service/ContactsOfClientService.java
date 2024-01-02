@@ -8,8 +8,4 @@ public interface ContactsOfClientService {
 
     void create(ContactOfClient contactOfClient);
 
-    ContactOfClient findById(Long contactOfClientId);
-
-    List<ContactOfClient> findAll();
-
 }

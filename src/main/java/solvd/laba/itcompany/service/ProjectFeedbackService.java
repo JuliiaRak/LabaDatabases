@@ -8,8 +8,6 @@ public interface ProjectFeedbackService {
 
     void create(ProjectFeedback projectFeedback);
 
-    ProjectFeedback findById(Long projectFeedbackId);
-
     List<ProjectFeedback> findAll();
 
 }

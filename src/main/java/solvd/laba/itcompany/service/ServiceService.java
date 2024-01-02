@@ -8,8 +8,6 @@ public interface ServiceService {
 
     void create(Service service);
 
-    Service findById(Long serviceId);
-
     List<Service> findAll();
 
 }

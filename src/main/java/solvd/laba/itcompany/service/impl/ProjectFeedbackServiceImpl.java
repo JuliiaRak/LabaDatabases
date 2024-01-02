@@ -1,23 +1,35 @@
 package solvd.laba.itcompany.service.impl;
 
 import solvd.laba.itcompany.domain.ProjectFeedback;
+import solvd.laba.itcompany.domain.exception.ServiceException;
+import solvd.laba.itcompany.persistence.ProjectFeedbackRepository;
+import solvd.laba.itcompany.persistence.impl.ProjectFeedbackJdbsRepository;
 import solvd.laba.itcompany.service.ProjectFeedbackService;
 
 import java.util.List;
 
 public class ProjectFeedbackServiceImpl implements ProjectFeedbackService {
-    @Override
-    public void create(ProjectFeedback projectFeedback) {
+    private final ProjectFeedbackRepository projectFeedbackRepository;
 
+    public ProjectFeedbackServiceImpl() {
+        projectFeedbackRepository = new ProjectFeedbackJdbsRepository();
     }
 
     @Override
-    public ProjectFeedback findById(Long projectFeedbackId) {
-        return null;
+    public void create(ProjectFeedback projectFeedback) {
+        try {
+            projectFeedbackRepository.create(projectFeedback);
+        } catch (Exception e) {
+            throw new ServiceException("Failed to create project feedback", e);
+        }
     }
 
     @Override
     public List<ProjectFeedback> findAll() {
-        return null;
+        try {
+            return projectFeedbackRepository.findAll();
+        } catch (Exception e) {
+            throw new ServiceException("Failed to find project feedbacks", e);
+        }
     }
 }

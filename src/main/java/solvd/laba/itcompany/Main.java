@@ -1,22 +1,11 @@
 package solvd.laba.itcompany;
 
-import solvd.laba.itcompany.domain.Department;
-import solvd.laba.itcompany.domain.Employee;
-import solvd.laba.itcompany.domain.Skill;
-import solvd.laba.itcompany.persistence.DepartmentRepository;
-import solvd.laba.itcompany.persistence.EmployeeRepository;
-import solvd.laba.itcompany.persistence.SkillRepository;
-import solvd.laba.itcompany.persistence.impl.DepartmentJdbsRepository;
-import solvd.laba.itcompany.persistence.impl.EmployeeJdbsRepository;
-import solvd.laba.itcompany.persistence.impl.SkillJdbsRepository;
-import solvd.laba.itcompany.service.DepartmentService;
-import solvd.laba.itcompany.service.EmployeeService;
-import solvd.laba.itcompany.service.SkillService;
-import solvd.laba.itcompany.service.impl.DepartmentServiceImpl;
-import solvd.laba.itcompany.service.impl.EmployeeServiceImpl;
-import solvd.laba.itcompany.service.impl.SkillServiceImpl;
+import solvd.laba.itcompany.domain.*;
+import solvd.laba.itcompany.service.*;
+import solvd.laba.itcompany.service.impl.*;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
@@ -34,14 +23,80 @@ public class Main {
         SkillService skillService = new SkillServiceImpl();
         Skill skill = new Skill();
         skill.setSkillName("Game Developing");
-        skillService.create(skill);
-
+        skill.setId(4L);
+//        skillService.create(skill);
 
         //employees
         EmployeeService employeeService = new EmployeeServiceImpl();
         Employee employee = new Employee(null, department, "Julia", "Rak", "Game Developer", new BigDecimal(30000), null);
-        employeeService.create(employee);
-        System.out.println(employeeService.findAll());
-        System.out.println(employeeService.findById(employee.getId()));
+        employee.setId(4L);
+//        employeeService.create(employee);
+//        System.out.println(employeeService.findAll());
+//        System.out.println(employeeService.findById(employee.getId()));
+//
+        //certifications
+        CertificationService certificationService = new CertificationServiceImpl();
+        Certification certification = new Certification(null, employee, "Java Certification", new Date(38563493));
+        certification.setId(3L);
+//        certificationService.create(certification);
+//        System.out.println(certificationService.findAll());
+
+        //vacations
+        VacationService vacationService = new VacationServiceImpl();
+        Vacation vacation = new Vacation(null, employee, new Date(999634938), new Date(999634938));
+        vacation.setId(3L);
+//        vacationService.create(vacation);
+
+        //clients
+        ClientService clientService = new ClientServiceImpl();
+        Client client = new Client(null, "Starbacks");
+        client.setId(3L);
+//        clientService.create(client);
+//        System.out.println(clientService.findById(client.getId()));
+
+        //contactOfClient
+        ContactsOfClientService contactsOfClientService = new ContactsOfClientServiceImpl();
+        ContactOfClient contactOfClient = new ContactOfClient(null, client, "06725649962", "369 Khrechatyk St");
+        contactOfClient.setId(3L);
+//        contactsOfClientService.create(contactOfClient);
+
+        //project
+        ProjectService projectService = new ProjectServiceImpl();
+        Project project = new Project(null, "Project C", client, null);
+        project.setId(3L);
+//        projectService.create(project);
+//        System.out.println(projectService.findAll());
+//        System.out.println(projectService.findById(project.getId()));
+
+        //meeting
+        MeetingService meetingService = new MeetingServiceImpl();
+        Meeting meeting = new Meeting(null, project, new Date(63834904), 30);
+        meeting.setId(3L);
+//        meetingService.create(meeting);
+
+        //projectFeedback
+        ProjectFeedbackService projectFeedbackService = new ProjectFeedbackServiceImpl();
+        ProjectFeedback projectFeedback = new ProjectFeedback(null, project, "Good job");
+        projectFeedback.setId(4L);
+//        projectFeedbackService.create(projectFeedback);
+//        System.out.println(projectFeedbackService.findAll());
+
+        //projectEmployees
+        ProjectEmployeeService projectEmployeeService = new ProjectEmployeeServiceImpl();
+        ProjectEmployee projectEmployee = new ProjectEmployee(project, employee, "Game Developer");
+        //projectEmployeeService.create(projectEmployee);
+
+        //service
+        ServiceService serviceService = new ServiceServiceImpl();
+        Service service = new Service(null, "Development", "Develop game", new BigDecimal(30000));
+        service.setId(3L);
+//        serviceService.create(service);
+//        System.out.println(serviceService.findAll());
+
+        //task
+        TaskService taskService = new TaskServiceImpl();
+        Task task = new Task(null, project, employee, "Develop a part of the game", "Code and test part of the game", "Created");
+        task.setId(3L);
+//        taskService.create(task);
     }
 }
