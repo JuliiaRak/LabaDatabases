@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="solvd.laba.itcompany.persistence.TaskRepository">
+
+    <insert id="create" parameterType="solvd.laba.itcompany.domain.Task">
+        INSERT INTO Tasks (project_id, employee_id, task_name, task_description, status)
+        VALUES (#{project.id}, #{employee.id}, #{taskName}, #{taskDescription}, #{status});
+    </insert>
+
+</mapper>

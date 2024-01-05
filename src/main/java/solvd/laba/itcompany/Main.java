@@ -13,7 +13,7 @@ public class Main {
         //department
         DepartmentService departmentService = new DepartmentServiceImpl();
         Department department = new Department();
-        department.setDepartmentName("GameDev");
+        department.setDepartmentName("GameDev3");
         department.setId(6L);
 //        departmentService.create(department);
 //        System.out.println(departmentService.findAll());
@@ -22,21 +22,21 @@ public class Main {
         //skills
         SkillService skillService = new SkillServiceImpl();
         Skill skill = new Skill();
-        skill.setSkillName("Game Developing");
+        skill.setSkillName("Game Developing2");
         skill.setId(4L);
-//        skillService.create(skill);
+        //skillService.create(skill);
 
         //employees
         EmployeeService employeeService = new EmployeeServiceImpl();
-        Employee employee = new Employee(null, department, "Julia", "Rak", "Game Developer", new BigDecimal(30000), null);
+        Employee employee = new Employee(null, department, "Marta", "Rak", "Java Developer", new BigDecimal(30000), null);
         employee.setId(4L);
 //        employeeService.create(employee);
 //        System.out.println(employeeService.findAll());
 //        System.out.println(employeeService.findById(employee.getId()));
-//
+
         //certifications
         CertificationService certificationService = new CertificationServiceImpl();
-        Certification certification = new Certification(null, employee, "Java Certification", new Date(38563493));
+        Certification certification = new Certification(null, employee, "Java Certification Rak", new Date(38563493));
         certification.setId(3L);
 //        certificationService.create(certification);
 //        System.out.println(certificationService.findAll());
@@ -62,11 +62,11 @@ public class Main {
 
         //project
         ProjectService projectService = new ProjectServiceImpl();
-        Project project = new Project(null, "Project C", client, null);
-        project.setId(3L);
-//        projectService.create(project);
-//        System.out.println(projectService.findAll());
-//        System.out.println(projectService.findById(project.getId()));
+        Project project = new Project(null, "Project DDD", client, null);
+        //project.setId(3L);
+        projectService.create(project);
+        System.out.println(projectService.findAll());
+        System.out.println(projectService.findById(project.getId()));
 
         //meeting
         MeetingService meetingService = new MeetingServiceImpl();

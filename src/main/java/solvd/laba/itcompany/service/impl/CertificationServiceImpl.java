@@ -4,6 +4,7 @@ import solvd.laba.itcompany.domain.Certification;
 import solvd.laba.itcompany.domain.exception.ServiceException;
 import solvd.laba.itcompany.persistence.CertificationRepository;
 import solvd.laba.itcompany.persistence.impl.CertificationJdbsRepository;
+import solvd.laba.itcompany.persistence.impl.CertificationMyBatisRepository;
 import solvd.laba.itcompany.service.CertificationService;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public class CertificationServiceImpl implements CertificationService {
     private final CertificationRepository certificationRepository;
 
     public CertificationServiceImpl() {
-        certificationRepository = new CertificationJdbsRepository();
+        certificationRepository = new CertificationMyBatisRepository();
     }
 
     @Override

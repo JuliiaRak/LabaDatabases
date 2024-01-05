@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="solvd.laba.itcompany.persistence.DepartmentRepository">
+
+    <insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true"
+            parameterType="solvd.laba.itcompany.domain.Department">
+        INSERT INTO Departments (department_name) VALUES (#{departmentName});
+    </insert>
+
+    <update id="update" parameterType="solvd.laba.itcompany.domain.Department">
+        UPDATE Departments SET department_name = #{departmentName} WHERE id = #{id};
+    </update>
+
+    <delete id="deleteById" parameterType="long">
+        DELETE FROM Departments WHERE id = #{id};
+    </delete>
+
+    <select id="findById" resultMap="departmentResultMap">
+        SELECT * FROM Departments WHERE id = #{id};
+    </select>
+
+    <select id="findAll" resultMap="departmentResultMap">
+        SELECT * FROM Departments;
+    </select>
+
+    <resultMap id="departmentResultMap" type="solvd.laba.itcompany.domain.Department" autoMapping="false">
+        <id property="id" column="id"/>
+        <result property="departmentName" column="department_name"/>
+    </resultMap>
+
+</mapper>

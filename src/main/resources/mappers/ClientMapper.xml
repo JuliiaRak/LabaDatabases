@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="solvd.laba.itcompany.persistence.ClientRepository">
+
+    <insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true"
+            parameterType="solvd.laba.itcompany.domain.Client">
+        INSERT INTO Clients (client_name) VALUES (#{clientName});
+    </insert>
+
+    <select id="findById" resultMap="clientResultMap" parameterType="long">
+        SELECT * FROM Clients WHERE id = #{id};
+    </select>
+
+    <resultMap id="clientResultMap" type="solvd.laba.itcompany.domain.Client" autoMapping="false">
+        <id property="id" column="id"/>
+        <result property="clientName" column="client_name"/>
+    </resultMap>
+
+</mapper>

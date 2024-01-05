@@ -4,6 +4,7 @@ import solvd.laba.itcompany.domain.Skill;
 import solvd.laba.itcompany.domain.exception.ServiceException;
 import solvd.laba.itcompany.persistence.SkillRepository;
 import solvd.laba.itcompany.persistence.impl.SkillJdbsRepository;
+import solvd.laba.itcompany.persistence.impl.SkillMyBatisRepository;
 import solvd.laba.itcompany.service.SkillService;
 
 public class SkillServiceImpl implements SkillService {
@@ -11,7 +12,7 @@ public class SkillServiceImpl implements SkillService {
     private final SkillRepository skillRepository;
 
     public SkillServiceImpl(){
-        skillRepository = new SkillJdbsRepository();
+        skillRepository = new SkillMyBatisRepository();
     }
 
     @Override

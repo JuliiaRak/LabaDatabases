@@ -4,13 +4,14 @@ import solvd.laba.itcompany.domain.Vacation;
 import solvd.laba.itcompany.domain.exception.ServiceException;
 import solvd.laba.itcompany.persistence.VacationRepository;
 import solvd.laba.itcompany.persistence.impl.VacationJdbsRepository;
+import solvd.laba.itcompany.persistence.impl.VacationMyBatisRepository;
 import solvd.laba.itcompany.service.VacationService;
 
 public class VacationServiceImpl implements VacationService {
     private final VacationRepository vacationRepository;
 
     public VacationServiceImpl() {
-        vacationRepository = new VacationJdbsRepository();
+        vacationRepository = new VacationMyBatisRepository();
     }
 
     @Override

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="solvd.laba.itcompany.persistence.ProjectFeedbackRepository">
+
+    <insert id="create" parameterType="solvd.laba.itcompany.domain.ProjectFeedback">
+        INSERT INTO Project_Feedbacks (project_id, feedback_text)
+        VALUES (#{project.id}, #{feedbackText});
+    </insert>
+
+    <select id="findAll" resultMap="projectFeedbackResultMap">
+        SELECT * FROM Project_Feedbacks;
+    </select>
+
+    <resultMap id="projectFeedbackResultMap" type="solvd.laba.itcompany.domain.ProjectFeedback" autoMapping="false">
+        <id property="id" column="id"/>
+        <result property="feedbackText" column="feedback_text"/>
+        <association property="project" column="project_id"
+                     javaType="solvd.laba.itcompany.domain.Project"
+                     select="solvd.laba.itcompany.persistence.ProjectRepository.findById"
+                     fetchType="eager">
+        </association>
+    </resultMap>
+
+</mapper>

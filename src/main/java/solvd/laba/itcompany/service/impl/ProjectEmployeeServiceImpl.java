@@ -4,6 +4,7 @@ import solvd.laba.itcompany.domain.ProjectEmployee;
 import solvd.laba.itcompany.domain.exception.ServiceException;
 import solvd.laba.itcompany.persistence.ProjectEmployeeRepository;
 import solvd.laba.itcompany.persistence.impl.ProjectEmployeeJdbsRepository;
+import solvd.laba.itcompany.persistence.impl.ProjectEmployeeMyBatisRepository;
 import solvd.laba.itcompany.service.ProjectEmployeeService;
 import solvd.laba.itcompany.service.ProjectService;
 
@@ -11,7 +12,7 @@ public class ProjectEmployeeServiceImpl implements ProjectEmployeeService {
     private final ProjectEmployeeRepository projectEmployeeRepository;
 
     public ProjectEmployeeServiceImpl() {
-        projectEmployeeRepository = new ProjectEmployeeJdbsRepository();
+        projectEmployeeRepository = new ProjectEmployeeMyBatisRepository();
     }
 
     @Override

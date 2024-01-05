@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="solvd.laba.itcompany.persistence.CertificationRepository">
+
+    <insert id="create">
+        INSERT INTO Certifications (employee_id, certification_name, date)
+        VALUES (#{employee.id}, #{certificationName}, #{date})
+    </insert>
+
+    <select id="findAll" resultMap="certificationResultMap">
+        SELECT * FROM Certifications;
+    </select>
+
+    <resultMap id="certificationResultMap" type="solvd.laba.itcompany.domain.Certification" autoMapping="false">
+        <id property="id" column="id"/>
+        <result property="certificationName" column="certification_name"/>
+        <result property="date" column="date"/>
+        <association property="employee" column="employee_id"
+                     javaType="solvd.laba.itcompany.domain.Employee"
+                     select="solvd.laba.itcompany.persistence.EmployeeRepository.findById"/>
+    </resultMap>
+
+</mapper>

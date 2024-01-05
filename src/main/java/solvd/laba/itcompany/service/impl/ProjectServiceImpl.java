@@ -4,6 +4,7 @@ import solvd.laba.itcompany.domain.Project;
 import solvd.laba.itcompany.domain.exception.ServiceException;
 import solvd.laba.itcompany.persistence.ProjectRepository;
 import solvd.laba.itcompany.persistence.impl.ProjectJdbsRepository;
+import solvd.laba.itcompany.persistence.impl.ProjectMyBatisRepository;
 import solvd.laba.itcompany.service.EmployeeService;
 import solvd.laba.itcompany.service.ProjectService;
 import solvd.laba.itcompany.service.ServiceService;
@@ -12,12 +13,10 @@ import java.util.List;
 
 public class ProjectServiceImpl implements ProjectService {
     private final ProjectRepository projectRepository;
-    private final EmployeeService employeeService;
     private final ServiceService serviceService;
 
     public ProjectServiceImpl() {
-        projectRepository = new ProjectJdbsRepository();
-        employeeService = new EmployeeServiceImpl();
+        projectRepository = new ProjectMyBatisRepository();
         serviceService = new ServiceServiceImpl();
     }
 
@@ -26,9 +25,6 @@ public class ProjectServiceImpl implements ProjectService {
         try {
             projectRepository.create(project);
 
-            if (project.getEmployees() != null) {
-                project.getEmployees().stream().forEach(employee -> employeeService.create(employee));
-            }
             if (project.getServices() != null) {
                 project.getServices().stream().forEach(service -> serviceService.create(service));
             }

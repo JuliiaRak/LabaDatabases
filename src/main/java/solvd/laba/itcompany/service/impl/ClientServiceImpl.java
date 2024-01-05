@@ -6,6 +6,7 @@ import solvd.laba.itcompany.persistence.CertificationRepository;
 import solvd.laba.itcompany.persistence.ClientRepository;
 import solvd.laba.itcompany.persistence.impl.CertificationJdbsRepository;
 import solvd.laba.itcompany.persistence.impl.ClientJbdsRepository;
+import solvd.laba.itcompany.persistence.impl.ClientMyBatisRepository;
 import solvd.laba.itcompany.service.ClientService;
 
 public class ClientServiceImpl implements ClientService {
@@ -13,7 +14,7 @@ public class ClientServiceImpl implements ClientService {
     private final ClientRepository clientRepository;
 
     public ClientServiceImpl() {
-        clientRepository = new ClientJbdsRepository();
+        clientRepository = new ClientMyBatisRepository();
     }
 
     @Override

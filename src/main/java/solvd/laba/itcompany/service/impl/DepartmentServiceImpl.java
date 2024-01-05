@@ -4,6 +4,7 @@ import solvd.laba.itcompany.domain.Department;
 import solvd.laba.itcompany.domain.exception.ServiceException;
 import solvd.laba.itcompany.persistence.DepartmentRepository;
 import solvd.laba.itcompany.persistence.impl.DepartmentJdbsRepository;
+import solvd.laba.itcompany.persistence.impl.DepartmentMyBatisRepository;
 import solvd.laba.itcompany.service.DepartmentService;
 
 import javax.sql.rowset.serial.SerialException;
@@ -13,7 +14,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     private final DepartmentRepository departmentRepository;
 
     public DepartmentServiceImpl() {
-        departmentRepository = new DepartmentJdbsRepository();
+        departmentRepository = new DepartmentMyBatisRepository();
     }
 
     @Override

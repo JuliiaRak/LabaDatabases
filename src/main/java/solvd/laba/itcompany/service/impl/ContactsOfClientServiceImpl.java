@@ -4,13 +4,14 @@ import solvd.laba.itcompany.domain.ContactOfClient;
 import solvd.laba.itcompany.domain.exception.ServiceException;
 import solvd.laba.itcompany.persistence.ContactOfClientRepository;
 import solvd.laba.itcompany.persistence.impl.ContactOfClientJdbsRepository;
+import solvd.laba.itcompany.persistence.impl.ContactOfClientMyBatisRepository;
 import solvd.laba.itcompany.service.ContactsOfClientService;
 
 public class ContactsOfClientServiceImpl implements ContactsOfClientService {
     private final ContactOfClientRepository contactOfClientRepository;
 
     public ContactsOfClientServiceImpl() {
-        contactOfClientRepository = new ContactOfClientJdbsRepository();
+        contactOfClientRepository = new ContactOfClientMyBatisRepository();
     }
 
     @Override

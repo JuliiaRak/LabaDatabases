@@ -4,6 +4,7 @@ import solvd.laba.itcompany.domain.Service;
 import solvd.laba.itcompany.domain.exception.ServiceException;
 import solvd.laba.itcompany.persistence.ServiceRepository;
 import solvd.laba.itcompany.persistence.impl.ServiceJdbsRepository;
+import solvd.laba.itcompany.persistence.impl.ServiceMyBatisRepository;
 import solvd.laba.itcompany.service.ServiceService;
 
 import java.util.List;
@@ -12,7 +13,7 @@ public class ServiceServiceImpl implements ServiceService {
     private final ServiceRepository serviceRepository;
 
     public ServiceServiceImpl() {
-        serviceRepository = new ServiceJdbsRepository();
+        serviceRepository = new ServiceMyBatisRepository();
     }
 
     @Override

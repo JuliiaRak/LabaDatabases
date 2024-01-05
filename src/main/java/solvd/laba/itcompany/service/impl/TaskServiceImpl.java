@@ -4,13 +4,14 @@ import solvd.laba.itcompany.domain.Task;
 import solvd.laba.itcompany.domain.exception.ServiceException;
 import solvd.laba.itcompany.persistence.TaskRepository;
 import solvd.laba.itcompany.persistence.impl.TaskJdbsRepository;
+import solvd.laba.itcompany.persistence.impl.TaskMyBatisRepository;
 import solvd.laba.itcompany.service.TaskService;
 
 public class TaskServiceImpl implements TaskService {
     private final TaskRepository taskRepository;
 
     public TaskServiceImpl() {
-        taskRepository = new TaskJdbsRepository();
+        taskRepository = new TaskMyBatisRepository();
     }
 
     @Override

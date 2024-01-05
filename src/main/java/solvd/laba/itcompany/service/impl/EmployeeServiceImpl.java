@@ -5,6 +5,7 @@ import solvd.laba.itcompany.domain.Skill;
 import solvd.laba.itcompany.domain.exception.ServiceException;
 import solvd.laba.itcompany.persistence.EmployeeRepository;
 import solvd.laba.itcompany.persistence.impl.EmployeeJdbsRepository;
+import solvd.laba.itcompany.persistence.impl.EmployeeMyBatisRepository;
 import solvd.laba.itcompany.service.EmployeeService;
 import solvd.laba.itcompany.service.SkillService;
 
@@ -18,7 +19,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final SkillService skillService;
 
     public  EmployeeServiceImpl(){
-        employeeRepository = new EmployeeJdbsRepository();
+        employeeRepository = new EmployeeMyBatisRepository();
         skillService = new SkillServiceImpl();
     }
 

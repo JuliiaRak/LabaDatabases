@@ -4,6 +4,7 @@ import solvd.laba.itcompany.domain.ProjectFeedback;
 import solvd.laba.itcompany.domain.exception.ServiceException;
 import solvd.laba.itcompany.persistence.ProjectFeedbackRepository;
 import solvd.laba.itcompany.persistence.impl.ProjectFeedbackJdbsRepository;
+import solvd.laba.itcompany.persistence.impl.ProjectFeedbackMyBatisRepository;
 import solvd.laba.itcompany.service.ProjectFeedbackService;
 
 import java.util.List;
@@ -12,7 +13,7 @@ public class ProjectFeedbackServiceImpl implements ProjectFeedbackService {
     private final ProjectFeedbackRepository projectFeedbackRepository;
 
     public ProjectFeedbackServiceImpl() {
-        projectFeedbackRepository = new ProjectFeedbackJdbsRepository();
+        projectFeedbackRepository = new ProjectFeedbackMyBatisRepository();
     }
 
     @Override

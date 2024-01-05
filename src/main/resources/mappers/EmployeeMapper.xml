@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="solvd.laba.itcompany.persistence.EmployeeRepository">
+
+    <insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true"
+            parameterType="solvd.laba.itcompany.domain.Employee">
+        INSERT INTO Employees (department_id, first_name, last_name, position, salary)
+        VALUES (#{department.id}, #{firstName}, #{lastName}, #{position}, #{salary});
+    </insert>
+
+    <select id="findById" resultMap="employeeResultMap" parameterType="long">
+        SELECT * FROM Employees WHERE id = #{id};
+    </select>
+
+    <select id="findAll" resultMap="employeeResultMap">
+        SELECT * FROM Employees;
+    </select>
+
+    <resultMap id="employeeResultMap" type="solvd.laba.itcompany.domain.Employee" autoMapping="false">
+        <id property="id" column="id"/>
+        <result property="firstName" column="first_name"/>
+        <result property="lastName" column="last_name"/>
+        <result property="position" column="position"/>
+        <result property="salary" column="salary"/>
+        <association property="department" column="department_id"
+                     javaType="solvd.laba.itcompany.domain.Department"
+                     select="solvd.laba.itcompany.persistence.DepartmentRepository.findById"
+                     fetchType="eager">
+        </association>
+    </resultMap>
+
+</mapper>
