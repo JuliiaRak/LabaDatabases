@@ -53,4 +53,22 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new ServiceException("Failed to find all employees", e);
         }
     }
+
+    @Override
+    public void addSkill(Long employeeId, Long skilId) {
+        try {
+            employeeRepository.addSkill(employeeId, skilId);
+        } catch (Exception e) {
+            throw new ServiceException("Failed to add skill to employee", e);
+        }
+    }
+
+    @Override
+    public List<Skill> findSkillsByEmployeeId(Long employeeId) {
+        try {
+            return employeeRepository.findSkillsByEmployeeId(employeeId);
+        } catch (Exception e) {
+            throw new ServiceException("Failed to find all skills of employee", e);
+        }
+    }
 }

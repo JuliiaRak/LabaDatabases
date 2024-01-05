@@ -29,10 +29,12 @@ public class Main {
         //employees
         EmployeeService employeeService = new EmployeeServiceImpl();
         Employee employee = new Employee(null, department, "Marta", "Rak", "Java Developer", new BigDecimal(30000), null);
-        employee.setId(4L);
+        //employee.setId(4L);
 //        employeeService.create(employee);
+        System.out.println(employeeService.findById(1L));
+        System.out.println(employeeService.findSkillsByEmployeeId(1L));
+//        System.out.println(employeeService.findSkillsByEmployeeId(4L));
 //        System.out.println(employeeService.findAll());
-//        System.out.println(employeeService.findById(employee.getId()));
 
         //certifications
         CertificationService certificationService = new CertificationServiceImpl();
@@ -63,10 +65,10 @@ public class Main {
         //project
         ProjectService projectService = new ProjectServiceImpl();
         Project project = new Project(null, "Project DDD", client, null);
-        //project.setId(3L);
-        projectService.create(project);
-        System.out.println(projectService.findAll());
-        System.out.println(projectService.findById(project.getId()));
+        project.setId(3L);
+//        projectService.create(project);
+//        System.out.println(projectService.findAll());
+//        System.out.println(projectService.findById(project.getId()));
 
         //meeting
         MeetingService meetingService = new MeetingServiceImpl();

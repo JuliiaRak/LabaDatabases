@@ -17,6 +17,23 @@
         SELECT * FROM Employees;
     </select>
 
+    <insert id="addSkill" parameterType="Map">
+        INSERT INTO Employee_Skills (employee_id, skill_id)
+        VALUES (#{employeeId}, #{skillId});
+    </insert>
+
+    <select id="findSkillsByEmployeeId" resultMap="skillResultMap" parameterType="long">
+        SELECT Skills.id, Skills.skill_name
+        FROM Skills
+                 JOIN Employee_Skills ON Skills.id = Employee_Skills.skill_id
+        WHERE Employee_Skills.employee_id = #{employeeId};
+    </select>
+
+    <resultMap id="skillResultMap" type="solvd.laba.itcompany.domain.Skill" autoMapping="false">
+        <id property="id" column="id"/>
+        <result property="skillName" column="skill_name"/>
+    </resultMap>
+
     <resultMap id="employeeResultMap" type="solvd.laba.itcompany.domain.Employee" autoMapping="false">
         <id property="id" column="id"/>
         <result property="firstName" column="first_name"/>
@@ -28,6 +45,8 @@
                      select="solvd.laba.itcompany.persistence.DepartmentRepository.findById"
                      fetchType="eager">
         </association>
+        <collection property="skills" ofType="solvd.laba.itcompany.domain.Skill" column="id" javaType="java.util.List"
+                    select="solvd.laba.itcompany.persistence.EmployeeRepository.findSkillsByEmployeeId" fetchType="eager"/>
     </resultMap>
 
 </mapper>
