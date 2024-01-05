@@ -21,6 +21,24 @@
         DELETE FROM Projects WHERE id = #{id};
     </delete>
 
+    <insert id="addService" parameterType="Map">
+        INSERT INTO Project_Services (project_id, service_id)
+        VALUES (#{projectId}, #{serviceId});
+    </insert>
+
+    <select id="findServicesByProjectId" resultMap="serviceResultMap" parameterType="long">
+        SELECT Service.* FROM Service
+                 JOIN Project_Services ON Service.id = Project_Services.service_id
+        WHERE Project_Services.project_id = #{projectId};
+    </select>
+
+    <resultMap id="serviceResultMap" type="solvd.laba.itcompany.domain.Service" autoMapping="false">
+        <id property="id" column="id"/>
+        <result property="serviceName" column="service_name"/>
+        <result property="description" column="description"/>
+        <result property="cost" column="cost"/>
+    </resultMap>
+
     <resultMap id="projectResultMap" type="solvd.laba.itcompany.domain.Project" autoMapping="false">
         <id property="id" column="id"/>
         <result property="projectName" column="project_name"/>
@@ -29,6 +47,8 @@
                      select="solvd.laba.itcompany.persistence.ClientRepository.findById"
                      fetchType="eager">
         </association>
+        <collection property="services" ofType="solvd.laba.itcompany.domain.Service" column="id" javaType="java.util.List"
+                    select="solvd.laba.itcompany.persistence.ProjectRepository.findServicesByProjectId" fetchType="eager"/>
     </resultMap>
 
 </mapper>

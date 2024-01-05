@@ -1,6 +1,7 @@
 package solvd.laba.itcompany.service.impl;
 
 import solvd.laba.itcompany.domain.Project;
+import solvd.laba.itcompany.domain.Service;
 import solvd.laba.itcompany.domain.exception.ServiceException;
 import solvd.laba.itcompany.persistence.ProjectRepository;
 import solvd.laba.itcompany.persistence.impl.ProjectJdbsRepository;
@@ -24,10 +25,6 @@ public class ProjectServiceImpl implements ProjectService {
     public void create(Project project) {
         try {
             projectRepository.create(project);
-
-            if (project.getServices() != null) {
-                project.getServices().stream().forEach(service -> serviceService.create(service));
-            }
         } catch (Exception e) {
             throw new ServiceException("Failed to create project", e);
         }
@@ -57,6 +54,24 @@ public class ProjectServiceImpl implements ProjectService {
             projectRepository.deleteById(projectId);
         } catch (Exception e) {
             throw new ServiceException("Failed to delete project", e);
+        }
+    }
+
+    @Override
+    public void addService(Long projectId, Long serviceId) {
+        try {
+            projectRepository.addService(projectId, serviceId);
+        } catch (Exception e) {
+            throw new ServiceException("Failed to create project", e);
+        }
+    }
+
+    @Override
+    public List<Service> findServicesByProjectId(Long projectId) {
+        try {
+            return projectRepository.findServicesByProjectId(projectId);
+        } catch (Exception e) {
+            throw new ServiceException("Failed to find projects", e);
         }
     }
 }

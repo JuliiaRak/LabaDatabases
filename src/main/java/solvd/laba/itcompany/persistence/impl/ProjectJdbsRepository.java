@@ -1,11 +1,18 @@
 package solvd.laba.itcompany.persistence.impl;
 
 import solvd.laba.itcompany.domain.Project;
+import solvd.laba.itcompany.domain.Service;
+import solvd.laba.itcompany.domain.Skill;
 import solvd.laba.itcompany.persistence.ProjectRepository;
 import solvd.laba.itcompany.domain.exception.PersistenceException;import solvd.laba.itcompany.persistence.config.ConnectionPool;
 import solvd.laba.itcompany.service.ClientService;
+import solvd.laba.itcompany.service.EmployeeService;
+import solvd.laba.itcompany.service.ProjectService;
 import solvd.laba.itcompany.service.impl.ClientServiceImpl;
+import solvd.laba.itcompany.service.impl.EmployeeServiceImpl;
+import solvd.laba.itcompany.service.impl.ProjectServiceImpl;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +24,10 @@ public class ProjectJdbsRepository implements ProjectRepository {
     private static final String FIND_BY_ID = "SELECT * FROM Projects WHERE id = ?;";
     private static final String FIND_ALL = "SELECT * FROM Projects;";
     private static final String DELETE = "DELETE FROM Projects WHERE id = ?;";
+    private static final String ADD_SERVICE = "INSERT INTO Project_Services (project_id, service_id) VALUES (?, ?);";
+    private static final String SELECT_SERVICES_BY_PROJECT_ID = "SELECT Service.* FROM Service " +
+            "JOIN Project_Services ON Services.id = Project_Services.service_id " +
+            "WHERE Project_Services.project_id = ?";
 
     @Override
     public void create(Project project) {
@@ -57,6 +68,10 @@ public class ProjectJdbsRepository implements ProjectRepository {
 
                 ClientService clientService = new ClientServiceImpl();
                 project.setClient(clientService.findById(clientId));
+
+                ProjectService projectService = new ProjectServiceImpl();
+                List<Service> services = projectService.findServicesByProjectId(projectId);
+                project.setServices(services);
             }
         } catch (SQLException e) {
             throw new PersistenceException("Unable to find project by id", e);
@@ -87,6 +102,10 @@ public class ProjectJdbsRepository implements ProjectRepository {
                 ClientService clientService = new ClientServiceImpl();
                 project.setClient(clientService.findById(clientId));
 
+                ProjectService projectService = new ProjectServiceImpl();
+                List<Service> services = projectService.findServicesByProjectId(projectId);
+                project.setServices(services);
+
                 projects.add(project);
             }
         } catch (SQLException e) {
@@ -110,5 +129,45 @@ public class ProjectJdbsRepository implements ProjectRepository {
         } finally {
             CONNECTION_POOL.releaseConnection(connection);
         }
+    }
+
+    @Override
+    public void addService(Long projectId, Long serviceId) {
+        Connection connection = CONNECTION_POOL.getConnection();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(ADD_SERVICE)) {
+            preparedStatement.setLong(1, projectId);
+            preparedStatement.setLong(2, serviceId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new PersistenceException("Unable to add service to project", e);
+        } finally {
+            CONNECTION_POOL.releaseConnection(connection);
+        }
+    }
+
+    @Override
+    public List<Service> findServicesByProjectId(Long projectId) {
+        List<Service> services = new ArrayList<>();
+
+        Connection connection = CONNECTION_POOL.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_SERVICES_BY_PROJECT_ID)) {
+            preparedStatement.setLong(1, projectId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Long serviceId = resultSet.getLong("id");
+                String serviceName = resultSet.getString("service_name");
+                String description = resultSet.getString("description");
+                BigDecimal cost = resultSet.getBigDecimal("cost");
+
+                Service service = new Service(serviceId, serviceName, description, cost);
+                services.add(service);
+            }
+        } catch (SQLException e) {
+            throw new PersistenceException("Unable to find skills of employee", e);
+        }
+
+        return services;
     }
 }
