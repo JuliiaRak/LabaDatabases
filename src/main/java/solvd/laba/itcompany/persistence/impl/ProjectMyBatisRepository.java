@@ -2,9 +2,7 @@ package solvd.laba.itcompany.persistence.impl;
 
 import solvd.laba.itcompany.domain.Project;
 import solvd.laba.itcompany.domain.Service;
-import solvd.laba.itcompany.domain.Skill;
 import solvd.laba.itcompany.domain.exception.PersistenceException;
-import solvd.laba.itcompany.persistence.ProjectRepository;
 import solvd.laba.itcompany.persistence.config.ConfigurationMyBatis;
 import org.apache.ibatis.session.SqlSession;
 

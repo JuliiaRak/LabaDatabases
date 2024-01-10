@@ -5,7 +5,7 @@ import solvd.laba.itcompany.domain.Service;
 
 import java.util.List;
 
-public interface ProjectRepository {
+public interface ProjectRepository2 {
 
     void create(Project project);
 

@@ -3,10 +3,7 @@ package solvd.laba.itcompany.service.impl;
 import solvd.laba.itcompany.domain.Project;
 import solvd.laba.itcompany.domain.Service;
 import solvd.laba.itcompany.domain.exception.ServiceException;
-import solvd.laba.itcompany.persistence.ProjectRepository;
-import solvd.laba.itcompany.persistence.impl.ProjectJdbsRepository;
 import solvd.laba.itcompany.persistence.impl.ProjectMyBatisRepository;
-import solvd.laba.itcompany.service.EmployeeService;
 import solvd.laba.itcompany.service.ProjectService;
 import solvd.laba.itcompany.service.ServiceService;
 

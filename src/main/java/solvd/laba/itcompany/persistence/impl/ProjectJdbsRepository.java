@@ -2,14 +2,12 @@ package solvd.laba.itcompany.persistence.impl;
 
 import solvd.laba.itcompany.domain.Project;
 import solvd.laba.itcompany.domain.Service;
-import solvd.laba.itcompany.domain.Skill;
-import solvd.laba.itcompany.persistence.ProjectRepository;
-import solvd.laba.itcompany.domain.exception.PersistenceException;import solvd.laba.itcompany.persistence.config.ConnectionPool;
+import solvd.laba.itcompany.domain.exception.PersistenceException;
+import solvd.laba.itcompany.persistence.ProjectRepository2;
+import solvd.laba.itcompany.persistence.config.ConnectionPool;
 import solvd.laba.itcompany.service.ClientService;
-import solvd.laba.itcompany.service.EmployeeService;
 import solvd.laba.itcompany.service.ProjectService;
 import solvd.laba.itcompany.service.impl.ClientServiceImpl;
-import solvd.laba.itcompany.service.impl.EmployeeServiceImpl;
 import solvd.laba.itcompany.service.impl.ProjectServiceImpl;
 
 import java.math.BigDecimal;
@@ -17,7 +15,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProjectJdbsRepository implements ProjectRepository {
+public class ProjectJdbsRepository implements ProjectRepository2 {
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
 
     private static final String INSERT = "INSERT INTO Projects (project_name, client_id) VALUES (?, ?);";

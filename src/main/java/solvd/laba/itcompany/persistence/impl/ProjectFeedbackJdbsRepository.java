@@ -3,7 +3,6 @@ package solvd.laba.itcompany.persistence.impl;
 import solvd.laba.itcompany.domain.ProjectFeedback;
 import solvd.laba.itcompany.domain.exception.PersistenceException;
 import solvd.laba.itcompany.persistence.ProjectFeedbackRepository;
-import solvd.laba.itcompany.persistence.ProjectRepository;
 import solvd.laba.itcompany.persistence.config.ConnectionPool;
 import solvd.laba.itcompany.service.ProjectService;
 import solvd.laba.itcompany.service.impl.ProjectServiceImpl;
