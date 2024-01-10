@@ -1,0 +1,46 @@
+{
+  "project": {
+    "id": 1,
+    "projectName": "JSON Project",
+    "client": {
+      "id": 1,
+      "clientName": "Company 2"
+    },
+    "services": [
+      {
+        "id": 1,
+        "serviceName": "Service 1",
+        "description": "Service 1 Description",
+        "cost": 100.00
+      },
+      {
+        "id": 2,
+        "serviceName": "Service 2",
+        "description": "Service 2 Description",
+        "cost": 200.00
+      }
+    ]
+  },
+  "employee": {
+    "id": 1,
+    "department": {
+      "id": 1,
+      "depName": "IT Department 1"
+    },
+    "firstName": "John",
+    "lastName": "Doe",
+    "position": "Java Developer",
+    "salary": 50000.00,
+    "skills": [
+      {
+        "id": 1,
+        "skillName": "Java"
+      },
+      {
+        "id": 2,
+        "skillName": "Automation Testing"
+      }
+    ]
+  },
+  "role": "Developer"
+}

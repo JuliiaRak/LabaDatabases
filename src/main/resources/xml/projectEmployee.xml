@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectEmployee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:noNamespaceSchemaLocation="../xsd/projectEmployee.xsd">
+    <project>
+        <id>1</id>
+        <projectName>XML Project 1</projectName>
+        <client>
+            <id>1</id>
+            <clientName>ABC Company</clientName>
+        </client>
+        <services>
+            <service>
+                <id>1</id>
+                <serviceName>Service 1</serviceName>
+                <description>Service 1 Description</description>
+                <cost>100.00</cost>
+            </service>
+            <service>
+                <id>2</id>
+                <serviceName>Service 2</serviceName>
+                <description>Service 2 Description</description>
+                <cost>200.00</cost>
+            </service>
+        </services>
+    </project>
+    <employee>
+        <id>1</id>
+        <department>
+            <id>1</id>
+            <departmentName>IT Department 1</departmentName>
+        </department>
+        <firstName>John</firstName>
+        <lastName>Doe</lastName>
+        <position>Java Developer</position>
+        <salary>50000.00</salary>
+        <skills>
+            <skill>
+                <id>1</id>
+                <skillName>Java</skillName>
+            </skill>
+            <skill>
+                <id>2</id>
+                <skillName>Automation Testing</skillName>
+            </skill>
+        </skills>
+    </employee>
+    <role>Developer</role>
+</projectEmployee>

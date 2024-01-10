@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:complexType name="SkillType">
+        <xs:all>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="skillName" type="xs:string"/>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="SkillsType">
+        <xs:sequence>
+            <xs:element name="skill" type="SkillType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="DepartmentType">
+        <xs:all>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="departmentName" type="xs:string"/>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="EmployeeType">
+        <xs:all>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="department" type="DepartmentType"/>
+            <xs:element name="firstName" type="xs:string"/>
+            <xs:element name="lastName" type="xs:string"/>
+            <xs:element name="position" type="xs:string"/>
+            <xs:element name="salary" type="xs:decimal"/>
+            <xs:element name="skills" type="SkillsType"/>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="CertificationType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="employee" type="EmployeeType"/>
+            <xs:element name="certificationName" type="xs:string"/>
+            <xs:element name="date" type="xs:date"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="certification" type="CertificationType"/>
+
+</xs:schema>

@@ -3,6 +3,7 @@ package solvd.laba.itcompany.service.impl;
 import solvd.laba.itcompany.domain.Project;
 import solvd.laba.itcompany.domain.Service;
 import solvd.laba.itcompany.domain.exception.ServiceException;
+import solvd.laba.itcompany.persistence.ProjectRepository2;
 import solvd.laba.itcompany.persistence.impl.ProjectMyBatisRepository;
 import solvd.laba.itcompany.service.ProjectService;
 import solvd.laba.itcompany.service.ServiceService;
@@ -10,7 +11,7 @@ import solvd.laba.itcompany.service.ServiceService;
 import java.util.List;
 
 public class ProjectServiceImpl implements ProjectService {
-    private final ProjectRepository projectRepository;
+    private final ProjectRepository2 projectRepository;
     private final ServiceService serviceService;
 
     public ProjectServiceImpl() {

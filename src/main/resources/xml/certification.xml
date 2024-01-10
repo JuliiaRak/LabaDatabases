@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<certification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:noNamespaceSchemaLocation="../xsd/certification.xsd">
+    <id>1</id>
+    <employee>
+        <id>1</id>
+        <department>
+            <id>1</id>
+            <departmentName>IT Department 1</departmentName>
+        </department>
+        <firstName>John</firstName>
+        <lastName>Doe</lastName>
+        <position>Java Developer</position>
+        <salary>50000.00</salary>
+        <skills>
+            <skill>
+                <id>1</id>
+                <skillName>Java</skillName>
+            </skill>
+            <skill>
+                <id>2</id>
+                <skillName>Automation Testing</skillName>
+            </skill>
+        </skills>
+    </employee>
+    <certificationName>Java Certification</certificationName>
+    <date>2023-01-01</date>
+</certification>

@@ -86,7 +86,7 @@ public class Main {
         //projectEmployees
         ProjectEmployeeService projectEmployeeService = new ProjectEmployeeServiceImpl();
         ProjectEmployee projectEmployee = new ProjectEmployee(project, employee, "Game Developer");
-        //projectEmployeeService.create(projectEmployee);
+        //projectEmployeeService.create(projectEmployee.xml);
 
         //service
         ServiceService serviceService = new ServiceServiceImpl();

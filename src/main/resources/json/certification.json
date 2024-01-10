@@ -1,0 +1,26 @@
+{
+  "id": 1,
+  "employee": {
+    "id": 1,
+    "department": {
+      "id": 1,
+      "depName": "IT Department 1"
+    },
+    "firstName": "John",
+    "lastName": "Doe",
+    "position": "Java Developer",
+    "salary": 50000.00,
+    "skills": [
+      {
+        "id": 1,
+        "skillName": "Java"
+      },
+      {
+        "id": 2,
+        "skillName": "Automation Testing"
+      }
+    ]
+  },
+  "certificationName": "Java Certification",
+  "date": "01-03-2023"
+}
