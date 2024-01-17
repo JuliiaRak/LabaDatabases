@@ -1,0 +1,1 @@
+Notification that should be written only to file 

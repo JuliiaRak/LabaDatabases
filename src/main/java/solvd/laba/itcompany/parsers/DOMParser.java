@@ -1,8 +1,5 @@
 package solvd.laba.itcompany.parsers;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -16,14 +13,11 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DOMParser {
-    private static final Logger LOGGER = LogManager.getLogger(DOMParser.class);
+public class DOMParser implements IXmlConverter {
 
-    public static void main(String[] args) {
-        //LOGGER.info("PROGRAM STARTED");
-
+    @Override
+    public Object convertXml(File xmlFile) {
         try {
-            File xmlFile = new File("src/main/resources/xml/projectEmployee.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(xmlFile);
@@ -33,11 +27,12 @@ public class DOMParser {
             Element projectEmployeeElement = doc.getDocumentElement();
             ProjectEmployee projectEmployeeXML = createProjectEmployee(projectEmployeeElement);
 
-            LOGGER.info(projectEmployeeXML);
+            return  projectEmployeeXML;
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return  null;
     }
 
     private static ProjectEmployee createProjectEmployee(Element projectEmployeeElement) {
